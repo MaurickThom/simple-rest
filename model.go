@@ -11,7 +11,7 @@ type Contact struct {
 }
 
 // Contacts slice of contact
-type Contacts []Contact
+type Contacts []*Contact
 
 // String return the string of object
 func (c *Contact) String() string {
