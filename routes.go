@@ -1,16 +1,17 @@
 package main
 
 import (
-	"fmt"
+	"github.com/labstack/echo"
 	"net/http"
 )
 
 func startRoutes() {
-	http.HandleFunc("/", index)
-	http.HandleFunc("/contacts", process)
-	http.ListenAndServe(":8080", nil)
+	e := echo.New()
+	e.GET("/", index)
+	e.GET("/contacts", get)
+	e.Start(":8080")
 }
 
-func index(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprint(w, "Hola mundo")
+func index(c echo.Context) error {
+	return c.String(http.StatusOK, "Hola mundo")
 }

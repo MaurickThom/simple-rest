@@ -22,9 +22,7 @@ func (c *Contact) String() string {
 func (cs *Contacts) String() string {
 	var r string
 	for _, c := range *cs {
-		fmt.Printf("%#v", c)
 		r += fmt.Sprintf("%d, %s, %s, %s\n", c.ID, c.Name, c.City, c.Phone)
 	}
-	fmt.Println(r)
 	return r
 }

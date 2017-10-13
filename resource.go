@@ -1,16 +1,12 @@
 package main
 
 import (
+	"github.com/labstack/echo"
 	"net/http"
 )
 
-// process handler for all request
-func process(w http.ResponseWriter, r *http.Request) {
-	if r.Method == http.MethodGet {
-		cs := getAll()
-
-		w.Header().Set("Content-type", "text/plain")
-		w.WriteHeader(http.StatusOK)
-		w.Write([]byte(cs.String()))
-	}
+// get handler for all request
+func get(c echo.Context) error {
+	cs := getAll()
+	return c.String(http.StatusOK, cs.String())
 }
