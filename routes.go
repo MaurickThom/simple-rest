@@ -9,6 +9,8 @@ func startRoutes() {
 	e := echo.New()
 	e.GET("/", index)
 	e.GET("/contacts", get)
+	e.GET("/contacts/:id", getID)
+
 	e.Start(":8080")
 }
 
