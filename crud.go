@@ -51,7 +51,7 @@ func add(c *Contact) {
 func getMaxID() int {
 	size := len(listado)
 	if size > 0 {
-		return listado[size - 1].ID + 1
+		return listado[size-1].ID + 1
 	}
 
 	return 1
@@ -69,6 +69,5 @@ func update(id int, c *Contact) {
 
 // delete
 func delete(id int) {
-	listado[len(listado)-1], listado[id] = listado[id], listado[len(listado)-1]
-	listado = listado[:len(listado)-1]
+	listado = append(listado[:id-1], listado[id:]...)
 }

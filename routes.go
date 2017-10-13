@@ -10,6 +10,9 @@ func startRoutes() {
 	e.GET("/", index)
 	e.GET("/contacts", get)
 	e.GET("/contacts/:id", getID)
+	e.POST("/contacts", create)
+	e.DELETE("/contacts/:id", del)
+	e.PUT("/contacts/:id", upd)
 
 	e.Start(":8080")
 }
