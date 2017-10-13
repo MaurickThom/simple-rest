@@ -7,6 +7,7 @@ import (
 
 func startRoutes() {
 	http.HandleFunc("/", index)
+	http.HandleFunc("/contacts", process)
 	http.ListenAndServe(":8080", nil)
 }
 
