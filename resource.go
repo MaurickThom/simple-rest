@@ -71,6 +71,24 @@ func create(c echo.Context) error {
 	}
 
 	add(&co)
+	uri := fmt.Sprintf("%s%s%s", c.Request().URL.Scheme, c.Request().Host, c.Request().RequestURI)
+	self := Navigation{
+		Title:       "self",
+		Description: "self resource",
+		Link:        fmt.Sprintf("%s/%d", uri, co.ID),
+	}
+	prev := Navigation{
+		Title:       "prev",
+		Description: "Previous resource",
+		Link:        fmt.Sprintf("%s/%d", uri, co.ID-1),
+	}
+	next := Navigation{
+		Title:       "next",
+		Description: "Next resource",
+		Link:        fmt.Sprintf("%s/%d", uri, co.ID+1),
+	}
+
+	co.Navigations = []Navigation{self, prev, next}
 
 	ct := c.Request().Header.Get("Accept")
 

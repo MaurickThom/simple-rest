@@ -4,10 +4,18 @@ import "fmt"
 
 // Contact struct
 type Contact struct {
-	ID    int    `json:"id"`
-	Name  string `json:"name"`
-	City  string `json:"city"`
-	Phone string `json:"phone"`
+	ID          int          `json:"id"`
+	Name        string       `json:"name"`
+	City        string       `json:"city"`
+	Phone       string       `json:"phone"`
+	Navigations []Navigation `json:"navigation"`
+}
+
+// Navigation struct
+type Navigation struct {
+	Title       string `json:"title"`
+	Description string `json:"description"`
+	Link        string `json:"link"`
 }
 
 // Contacts slice of contact
