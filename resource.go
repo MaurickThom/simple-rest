@@ -9,8 +9,15 @@ import (
 
 // get handler for all request
 func get(c echo.Context) error {
-	cs := getAll()
+	cs := Contacts{}
 	ct := c.Request().Header.Get("Accept")
+
+	filter := c.QueryParam("city")
+	if filter == "" {
+		cs = getAll()
+	} else {
+		cs = getByCity(filter)
+	}
 
 	switch ct {
 	case "":
